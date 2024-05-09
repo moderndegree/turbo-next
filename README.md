@@ -1,4 +1,4 @@
-# Turborepo w/Next.js
+# Turborepo with Express, Next.js, and Docker
 
 This is a demonstration of a monorepo with a Next.js application running along side an Express service API.
 
