@@ -2,10 +2,6 @@
 
 This is a demonstration of a monorepo with a Next.js application running along side an Express service API.
 
-## What's inside?
-
-This monorepo includes the following:
-
 ### Installation
 
 This monorepo uses [pnpm](http://pnpm.io) as its package manager. To install your dependencies:
