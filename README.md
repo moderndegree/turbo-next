@@ -1,18 +1,26 @@
-# Turborepo Docker starter
+# Turborepo w/Next.js
 
-This is an official Docker starter Turborepo.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest -e with-docker
-```
+This is a demonstration of a monorepo with a Next.js application running along side an Express service API.
 
 ## What's inside?
 
-This Turborepo includes the following:
+This monorepo includes the following:
+
+### Installation
+
+This monorepo uses [pnpm](http://pnpm.io) as its package manager. To install your dependencies:
+
+```
+pnpm install
+```
+
+### Local development
+
+To run the both apps in dev mode:
+
+```
+pnpm dev
+```
 
 ### Apps and Packages
 
@@ -35,11 +43,8 @@ This repo is configured to be built with Docker, and Docker compose. To build al
 # with each other, by using their container name as a hostname
 docker network create app_network
 
-# Build prod using new BuildKit engine
-COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose -f docker-compose.yml build
-
 # Start prod in detached mode
-docker-compose -f docker-compose.yml up -d
+docker compose up -d
 ```
 
 Open http://localhost:3000.
@@ -51,17 +56,9 @@ To shutdown all running containers:
 docker kill $(docker ps -q) && docker rm $(docker ps -a -q)
 ```
 
-### Remote Caching
-
-This example includes optional remote caching. In the Dockerfiles of the apps, uncomment the build arguments for `TURBO_TEAM` and `TURBO_TOKEN`. Then, pass these build arguments to your Docker build.
-
-You can test this behavior using a command like:
-
-`docker build -f apps/web/Dockerfile . --build-arg TURBO_TEAM=“your-team-name” --build-arg TURBO_TOKEN=“your-token“ --no-cache`
-
 ### Utilities
 
-This Turborepo has some additional tools already setup for you:
+This monorepo has some additional tools already setup for you:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
