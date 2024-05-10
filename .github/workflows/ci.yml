@@ -12,6 +12,7 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     env:
+      TURBO_CACHE_DIR: .turbo
       TURBO_TELEMETRY_DISABLED: 1
       DO_NOT_TRACK: 1
  
@@ -24,7 +25,7 @@ jobs:
       - name: Cache turbo build setup
         uses: actions/cache@v4
         with:
-          path: '.turbo'
+          path: .turbo
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
