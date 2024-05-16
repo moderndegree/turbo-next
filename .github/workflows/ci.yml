@@ -1,11 +1,11 @@
 name: CI
- 
+
 on:
   push:
     branches: ["master"]
   pull_request:
     types: [opened, synchronize]
- 
+
 jobs:
   build:
     name: Build and Test
@@ -15,7 +15,7 @@ jobs:
       TURBO_CACHE_DIR: .turbo
       TURBO_TELEMETRY_DISABLED: 1
       DO_NOT_TRACK: 1
- 
+
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -29,23 +29,23 @@ jobs:
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
- 
+
       - name: Install pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: 9.1.0
- 
+          version: 9.1.1
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
- 
+          cache: "pnpm"
+
       - name: Install dependencies
         run: pnpm install
- 
+
       - name: Build
         run: pnpm build
- 
+
       - name: Test
         run: pnpm test
