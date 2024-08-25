@@ -11,9 +11,9 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
+    "@changesets/cli": "^2.27.7",
     "@repo/eslint-config": "workspace:*",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.3",
     "turbo": "^1.13.3"
   },
   "engines": {
