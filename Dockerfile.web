@@ -1,12 +1,13 @@
-FROM node:lts-alpine AS base
+FROM node:lts-slim AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 RUN pnpm add turbo -g
  
 FROM base AS builder
-RUN apk add --no-cache libc6-compat
-RUN apk update
+# RUN apt-get add libc6-compat
+# RUN apt-get update
+# RUN apt-get clean
 # Set working directory
 WORKDIR /app
 COPY . .
@@ -16,8 +17,9 @@ RUN turbo prune web --docker
  
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
-RUN apk update
-RUN apk add --no-cache libc6-compat
+# RUN apt-get update
+# RUN apt-get add libc6-compat
+# RUN apt-get clean
 WORKDIR /app
  
 # First install the dependencies (as they change less often)

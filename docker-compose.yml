@@ -19,8 +19,8 @@ services:
     build:
       args:
         - PORT=3001
-        - PROJECT=api
       context: .
+      target: api
       dockerfile: ./Dockerfile
     restart: always
     ports:
